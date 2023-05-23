@@ -2,3 +2,7 @@ body {
     font-family: 'Space Grotesk', sans-serif;
     background-color: rgba(252, 247, 230, 1);
 }
+
+.font_span {
+    font-family: 'Space Mono', monospace;
+}
