@@ -19,15 +19,17 @@ function generateProductCards(x) {
         console.log(product);
 
         var card = document.createElement("div");
-        card.classList.add("cardOleg", "w-[342px]", "h-max", "sm:w-[300px]", "sm:h-max");
+        card.classList.add("w-[342px]", "min-h-[411px]", "sm:w-[300px]", "flex", "flex-col");
 
-        var icon = document.createElement("img")
-        icon.classList.add("rounded", "border-2", "border-black", "h-72", "p-3", "w-full")
-        icon.src = product.images[0].src
+        var icon = document.createElement("div")
+        icon.classList.add("rounded", "border-2", "border-black", "relative", "h-72", "p-3", "w-full")
 
+        var image = document.createElement("img")
+        image.classList.add("w-full", "h-full")
+        image.src = product.images[0].src
 
         var used = document.createElement("div")
-        used.classList.add("bg-black", "rounded", "w-max", "text-yellow-50", "font-normal", "text-sm", "leading-4", "p-1")
+        used.classList.add("absolute", "top-[12px]", "left-[12px]", "bg-black", "rounded", "text-yellow-50", "font-normal", "text-sm", "leading-4", "p-1")
         used.textContent = "USED"
 
         var leftInfo = document.createElement("div")
@@ -52,13 +54,12 @@ function generateProductCards(x) {
         secondRight.classList.add("font-normal", "text-sm", "leading-4")
         secondRight.textContent = "Slightly used"
 
-        var button = document.createElement("div")
-        button.classList.add("oleg", "p-3", "mt-[12px]", "flex", "justify-center", "items-center", "bg-black", "rounded", "text-white", "sm:flex", "sm:justify-center", "sm:items-center", "sm:opacity-0")
-        button.textContent = "PICK-UP IN 2200"
-
-        
+        var button = document.createElement("button")
+        button.classList.add("p-3", "w-full", "flex", "justify-center", "items-center", "bg-black", "rounded", "text-white", "sm:flex", "mt-auto", "sm:opacity-0")
+        button.innerHTML = "PICK-UP IN <span class='mx-[5px] relative top-[1px] border-b leading-4 border-white'>2022</span>"
 
         card.appendChild(icon);
+        icon.appendChild(image)
         icon.appendChild(used)
         card.appendChild(leftInfo);
         leftInfo.appendChild(productTitle)
@@ -67,6 +68,7 @@ function generateProductCards(x) {
         rightInfo.appendChild(productPrice)
         rightInfo.appendChild(secondRight)
         card.appendChild(button);
+
 
         productCardsContainer.appendChild(card);
 
@@ -88,7 +90,7 @@ var alpha = document.getElementById("alpha-click");
 var visibleDesc = document.getElementById("visible-desc");
 var visibleList = document.getElementById("visible-list")
 
-alpha.addEventListener("click", function() {
+alpha.addEventListener("click", function () {
     alpha.classList.toggle("h-max");
     visibleDesc.classList.toggle("opacity-100");
     visibleList.classList.toggle("opacity-100")
